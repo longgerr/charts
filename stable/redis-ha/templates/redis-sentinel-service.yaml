@@ -14,3 +14,4 @@ spec:
     app: {{ template "redis-ha.name" . }}
     release: "{{ .Release.Name }}"
     redis-role: "sentinel"
+  type: "{{ .Values.servers.serviceType }}"
