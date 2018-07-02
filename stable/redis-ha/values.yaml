@@ -19,7 +19,8 @@ resources:
 ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector
 ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#taints-and-tolerations-beta-feature
 ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
-nodeSelector: {}
+nodeSelector: 
+  redis-ha: "true"
 tolerations: []
 sentinelAffinity: |
   podAntiAffinity:
@@ -47,7 +48,8 @@ replicas:
   servers: 3
   sentinels: 3
 servers:
-  serviceType: ClusterIP  # [ClusterIP|LoadBalancer]
+  # serviceType: ClusterIP  # [ClusterIP|LoadBalancer]
+  serviceType: NodePort
   annotations: {}
 
 rbac:
