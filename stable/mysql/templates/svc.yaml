@@ -18,6 +18,7 @@ spec:
     port: {{ .Values.service.port }}
     targetPort: mysql
     {{- if .Values.service.nodePort }}
+    type: NodePort
     nodePort: {{ .Values.service.nodePort }}
     {{- end }}
   {{- if .Values.metrics.enabled }}
