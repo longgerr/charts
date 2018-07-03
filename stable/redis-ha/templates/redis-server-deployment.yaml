@@ -11,6 +11,11 @@ metadata:
 {{ include "labels.standard" . | indent 4 }}
 spec:
   replicas: {{ .Values.replicas.servers }}
+  {{- if .Values.nodeSelector }}
+  selector:
+    matchLabels:
+{{ toYaml .Values.nodeSelector | indent 6 }}
+  {{- end}}
   template:
     metadata:
       labels:
@@ -21,10 +26,6 @@ spec:
         redis-node: "true"
     spec:
       serviceAccountName: {{ template "redis-ha.serviceAccountName" . }}
-      {{- if .Values.nodeSelector }}
-      nodeSelector:
-{{ toYaml .Values.nodeSelector | indent 8 }}
-      {{- end }}
       {{- if .Values.tolerations }}
       tolerations:
 {{ toYaml .Values.tolerations | indent 8 }}
