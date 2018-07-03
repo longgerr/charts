@@ -1,5 +1,6 @@
 apiVersion: extensions/v1beta1
-kind: Deployment
+# kind: Deployment
+king: StatefulSet
 metadata:
   # Pay attention to the redis-role label at runtime. The self-determination logic in the image sets this value accordingly.
   name: {{ template "redis-ha.fullname" . }}-server
