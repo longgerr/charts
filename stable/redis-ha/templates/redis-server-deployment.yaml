@@ -27,6 +27,7 @@ spec:
         name: {{ template "redis-ha.fullname" . }}-server
         redis-node: "true"
     spec:
+      hostNetwork: true
       {{- if .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml .Values.nodeSelector | indent 8 }}
