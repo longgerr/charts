@@ -71,3 +71,8 @@ auth: false
 ## ref: https://github.com/kubernetes/charts/blob/master/stable/redis-ha/templates/redis-auth-secret.yaml
 ##
 ## redisPassword:
+
+## Enable data persistence
+persistence:
+  enabled: true
+  hostRootPath: /app/redis-ha

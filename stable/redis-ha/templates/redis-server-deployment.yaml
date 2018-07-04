@@ -67,4 +67,8 @@ spec:
             name: data
       volumes:
       - name: data
-
+{{- if .Values.persistence.enabled }}
+        hostPath: 
+          path: "{{ .Values.persistence.hostRootPath }}/{{ .Release.Namespace }}"
+          type: Directory
+{{- end }}
