@@ -32,12 +32,12 @@ spec:
         command: 
         - "/bin/mkdir"
         - -p
-        - /redis-data-root/{{ .Release.Namespace }}
+        - /redis-data-root/{{ .Values.persistence.hostRootPath }}/{{ .Release.Namespace }}
       volumes:
       - name: data
 {{- if .Values.persistence.enabled }}
         hostPath: 
-          path: "{{ .Values.persistence.hostRootPath }}"
+          path: "/"
           type: Directory
 {{- end }}
         
