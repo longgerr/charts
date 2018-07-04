@@ -66,7 +66,7 @@ spec:
           - mountPath: /redis-master-data
             name: data
       volumes:
-      - name: hostRoot
+      - name: host-root
         hostPath:
           path: "/"
           type: Directory
@@ -81,7 +81,7 @@ spec:
           image: "alpine:3.3"
           volumeMounts:
             - mountPath: /host-root
-              name: hostRoot
+              name: host-root
           command: 
           - "/bin/mkdir"
           - -p
