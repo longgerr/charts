@@ -32,7 +32,7 @@ spec:
         command: 
         - "/bin/mkdir"
         - -p
-        - /redis-data-root{{ .Values.persistence.mountedRootPath }}{{ .Values.persistence.appRootPath }}/{{ .Release.Namespace }}
+        - /redis-data-root{{ template "redis-ha.fullMountHostPath" }}
       volumes:
       - name: data
 {{- if .Values.persistence.enabled }}

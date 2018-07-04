@@ -69,6 +69,6 @@ spec:
       - name: data
 {{- if .Values.persistence.enabled }}
         hostPath: 
-          path: "{{ .Values.persistence.hostRootPath }}/{{ .Release.Namespace }}"
+          path: "{{ template "redis-ha.fullMountHostPath" }}"
           type: Directory
 {{- end }}

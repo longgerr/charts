@@ -79,4 +79,4 @@ auth: false
 persistence:
   enabled: true
   mountedRootPath: /app
-  appRootPath: /redis-ha
+  appRootPath: redis-ha
