@@ -55,6 +55,10 @@ spec:
               secretKeyRef:
                 name: {{ template "redis-ha.fullname" . }}
                 key: auth
+          - name: HOSTNAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
 {{- end }}
         ports:
           - containerPort: 6379

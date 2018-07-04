@@ -5,8 +5,8 @@ keywords:
 - redis
 - keyvalue
 - database
-version: 2.2.0
-appVersion: 4.0.8-r0
+version: 2.2.1
+appVersion: 4.0.9-r0
 description: Highly available Redis cluster with multiple sentinels and standbys.
 icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
 maintainers:
@@ -14,6 +14,8 @@ maintainers:
     name: smileisak
   - email: ianmaddox@google.com
     name: ianmaddox
+  - email: longgerr@gmail.com
+    name: longgerr
 details:
   This package provides a highly available Redis cluster with multiple sentinels and standbys.
   Note the `redis-master` pod is used for bootstrapping only and can be deleted once
