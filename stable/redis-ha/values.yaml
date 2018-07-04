@@ -42,7 +42,7 @@ serverAffinity: |
       topologyKey: kubernetes.io/hostname
 
 ## Redis image version
-redis_image: quay.io/smile/redis:4.0.9r0
+redis_image: 10.62.100.201/base/redis:4.0.10r0
 ## replicas number for each component
 replicas:
   servers: 3

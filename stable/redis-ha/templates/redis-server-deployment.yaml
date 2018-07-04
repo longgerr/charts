@@ -27,7 +27,7 @@ spec:
         name: {{ template "redis-ha.fullname" . }}-server
         redis-node: "true"
     spec:
-      hostNetwork: true
+      # hostNetwork: true
       {{- if .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml .Values.nodeSelector | indent 8 }}
@@ -55,10 +55,10 @@ spec:
               secretKeyRef:
                 name: {{ template "redis-ha.fullname" . }}
                 key: auth
-          - name: HOSTNAME
+          - name: MY_POD_IP
             valueFrom:
               fieldRef:
-                fieldPath: metadata.name
+                fieldPath: status.podIP
 {{- end }}
         ports:
           - containerPort: 6379
