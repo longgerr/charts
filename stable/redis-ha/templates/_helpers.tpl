@@ -57,5 +57,5 @@ Create the name of the service account to use
 {{- end -}}
 
 {{- define "redis-ha.fullMountHostPath" -}}
-{{- printf "%s/%s/%s" .Values.persistence.mountedRootPath .Values.persistence.appRootPath .Release.Namespace -}}
+{{- printf "%s/%s" .Values.persistence.rootHostPath .Release.Name -}}
 {{- end -}}

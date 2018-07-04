@@ -73,10 +73,8 @@ auth: false
 ## redisPassword:
 
 ## Enable data persistence
-## mountedRootPath is the root path of data storage which has already been created before installing the chart
-## appRootPath is the root of redis data storage
-## In the pre-install hook, the path <mountedRootPath>/<appRootPath>/<namespace> will be created
+## rootHostPath is the root of redis data storage
+## In the pre-install hook, the path <rootHostPath>/<release> will be created to store the redis
 persistence:
   enabled: true
-  mountedRootPath: /app
-  appRootPath: redis-ha
+  rootHostPath: /app/redis-ha

@@ -32,12 +32,12 @@ spec:
         command: 
         - "/bin/mkdir"
         - -p
-        - /redis-data-root{{ template "redis-ha.fullMountHostPath" }}
+        - /redis-data-root{{ template "redis-ha.fullMountHostPath" . }}
       volumes:
       - name: data
 {{- if .Values.persistence.enabled }}
         hostPath: 
-          path: "{{ .Values.persistence.mountedRootPath }}"
+          path: "/"
           type: Directory
 {{- end }}
         
