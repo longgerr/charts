@@ -66,9 +66,23 @@ spec:
           - mountPath: /redis-master-data
             name: data
       volumes:
+      - name: hostRoot
+        hostPath:
+          path: "/"
+          type: Directory
       - name: data
 {{- if .Values.persistence.enabled }}
         hostPath: 
           path: "{{ template "redis-ha.fullMountHostPath" . }}"
           type: Directory
 {{- end }}
+      initContainers:
+        - name: init-data-root
+          image: "alpine:3.3"
+          volumeMounts:
+            - mountPath: /host-root
+              name: hostRoot
+          command: 
+          - "/bin/mkdir"
+          - -p
+          - /host-root{{ template "redis-ha.fullMountHostPath" . }}
