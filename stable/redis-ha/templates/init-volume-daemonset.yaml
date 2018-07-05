@@ -34,7 +34,7 @@ spec:
         command: 
         - /bin/sh
         - -c
-        - "/bin/mkdir -p /redis-data-root{{ template "redis-ha.fullMountHostPath" . }} && sleep infinity"
+        - "/bin/mkdir -p /redis-data-root{{ template "redis-ha.fullMountHostPath" . }} && sleep 100000d"
       volumes:
       - name: data
 {{- if .Values.persistence.enabled }}
