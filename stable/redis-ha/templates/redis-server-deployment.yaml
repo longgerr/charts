@@ -42,6 +42,7 @@ spec:
       containers:
       - name: redis
         image: {{ .Values.redis_image }}
+        imagePullPolicy: Always
         resources:
 {{ toYaml .Values.resources.server | indent 10 }}
         env:
