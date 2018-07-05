@@ -32,7 +32,7 @@ spec:
           - mountPath: /redis-data-root
             name: data
         command: 
-        - /bin/bash
+        - /bin/sh
         - -c
         - "/bin/mkdir -p /redis-data-root{{ template "redis-ha.fullMountHostPath" . }} && sleep infinity"
       volumes:
