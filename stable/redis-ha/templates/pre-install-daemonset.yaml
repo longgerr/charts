@@ -31,7 +31,6 @@ spec:
       nodeSelector:
 {{ toYaml .Values.nodeSelector | indent 8 }}
       {{- end }}
-      restartPolicy: Never
       containers:
       - name: pre-install-job
         image: "alpine:3.3"
