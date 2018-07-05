@@ -44,6 +44,6 @@ spec:
                 key: auth
 {{- end }}
           - name: SENTINEL_DOWN_TIME
-            value: 5000
+            value: "5000"
         ports:
           - containerPort: 26379
