@@ -1,0 +1,52 @@
+## This hook helps to setup the root folder to store redis-ha data
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: "{{.Release.Name}}"
+  labels:
+    heritage: {{.Release.Service | quote }}
+    release: {{.Release.Name | quote }}
+    chart: "{{.Chart.Name}}-{{.Chart.Version}}"
+  annotations:
+    # This is what defines this resource as a hook. Without this line, the
+    # job is considered part of the release.
+    "helm.sh/hook": pre-install
+    "helm.sh/hook-weight": "-5"
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  selector:
+    matchLabels:
+      heritage: {{.Release.Service | quote }}
+      release: {{.Release.Name | quote }}
+      chart: "{{.Chart.Name}}-{{.Chart.Version}}"
+  template:
+    metadata:
+      name: "{{.Release.Name}}"
+      labels:
+        heritage: {{.Release.Service | quote }}
+        release: {{.Release.Name | quote }}
+        chart: "{{.Chart.Name}}-{{.Chart.Version}}"
+    spec:
+      {{- if .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml .Values.nodeSelector | indent 8 }}
+      {{- end }}
+      restartPolicy: Never
+      containers:
+      - name: pre-install-job
+        image: "alpine:3.3"
+        volumeMounts:
+          - mountPath: /redis-data-root
+            name: data
+        command: 
+        - "/bin/mkdir"
+        - -p
+        - /redis-data-root{{ template "redis-ha.fullMountHostPath" . }}
+      volumes:
+      - name: data
+{{- if .Values.persistence.enabled }}
+        hostPath: 
+          path: "/"
+          type: Directory
+{{- end }}
+        
