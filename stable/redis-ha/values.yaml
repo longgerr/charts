@@ -4,10 +4,10 @@
 resources:
   server:
     requests:
-      memory: 200Mi
+      memory: 2Gi
       cpu: 100m
     limits:
-      memory: 700Mi
+      memory: 2Gi
   sentinel:
     requests:
       memory: 200Mi
